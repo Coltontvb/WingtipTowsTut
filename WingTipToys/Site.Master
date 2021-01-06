@@ -46,7 +46,7 @@
                     <li class="nav-item active"><a class="nav-link" runat="server" href="~/">Home</a></li>
                     <li class="nav-item active"><a class="nav-link" runat="server" href="~/About">About</a></li>
                     <li class="nav-item active"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
-                    <li class="nav-item active"><a class="nav-link" runat="server" href="~/ProductDetails">Products</a></li>
+                    <li class="nav-item active"><a class="nav-link" runat="server" href="~/ProductList">Products</a></li>
                 </ul>
                 <asp:LoginView runat="server" ViewStateMode="Disabled">
                     <AnonymousTemplate>
@@ -74,7 +74,7 @@
         <div id="CategoryMenu" style="text-align:center">
             <asp:ListView ID="categoryList" runat="server" ItemType="WingtipToys.Models.Category" SelectMethod="GetCategories">
                 <ItemTemplate>
-                    <a href="/ProductList.aspx?=<%#: Item.CategoryID %>"><%#: Item.CategoryName %></a>
+                    <a href="/ProductList.aspx?id=<%#: Item.CategoryID %>"><%#: Item.CategoryName %></a>
                 </ItemTemplate>
                 <ItemSeparatorTemplate> | </ItemSeparatorTemplate>
             </asp:ListView>
