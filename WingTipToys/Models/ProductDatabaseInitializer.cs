@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace WingTipToys.Models
+namespace WingtipToys.Models
 {
-    public class ProductDatabaseInitializer : DropCreateDatabaseAlways<ProductContext>
+    public class ProductDatabaseInitializer : DropCreateDatabaseIfModelChanges<ProductContext>
     {
         protected override void Seed(ProductContext context)
         {
             GetCategories().ForEach(c => context.Categories.Add(c));
-            GetProducts().ForEach(c => context.Products.Add(c));
+            GetProducts().ForEach(p => context.Products.Add(p));
         }
 
         private static List<Category> GetCategories()
         {
-            var categories = new List<Category>
-            {
+            var categories = new List<Category> {
                 new Category
                 {
                     CategoryID = 1,
@@ -44,14 +40,14 @@ namespace WingTipToys.Models
                     CategoryName = "Rockets"
                 },
             };
+
             return categories;
         }
 
         private static List<Product> GetProducts()
         {
-            var products = new List<Product>
-            {
-                 new Product
+            var products = new List<Product> {
+                new Product
                 {
                     ProductID = 1,
                     ProductName = "Convertible Car",
@@ -200,6 +196,7 @@ namespace WingTipToys.Models
                     CategoryID = 5
                 }
             };
+
             return products;
         }
     }

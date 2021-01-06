@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - Wingtip Toys</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -46,6 +46,7 @@
                     <li class="nav-item active"><a class="nav-link" runat="server" href="~/">Home</a></li>
                     <li class="nav-item active"><a class="nav-link" runat="server" href="~/About">About</a></li>
                     <li class="nav-item active"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
+                    <li class="nav-item active"><a class="nav-link" runat="server" href="~/ProductDetails">Products</a></li>
                 </ul>
                 <asp:LoginView runat="server" ViewStateMode="Disabled">
                     <AnonymousTemplate>
@@ -65,6 +66,19 @@
                 </asp:LoginView>
             </div>
         </nav>
+        <div id="TitleContent" class="container" style="text-align:center">
+            <a runat="server" href="~/">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/Content/Images/logo.jpg"  />
+            </a>
+        </div>
+        <div id="CategoryMenu" style="text-align:center">
+            <asp:ListView ID="categoryList" runat="server" ItemType="WingtipToys.Models.Category" SelectMethod="GetCategories">
+                <ItemTemplate>
+                    <a href="/ProductList.aspx?=<%#: Item.CategoryID %>"><%#: Item.CategoryName %></a>
+                </ItemTemplate>
+                <ItemSeparatorTemplate> | </ItemSeparatorTemplate>
+            </asp:ListView>
+        </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
