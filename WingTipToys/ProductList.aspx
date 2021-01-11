@@ -6,7 +6,7 @@
             <asp:ListView ID="productList" runat="server" DataKeyNames="ProductID" GroupItemCount="4" ItemType="WingtipToys.Models.Product" SelectMethod="GetProducts">
                 <EmptyDataTemplate>
                     <table>
-                        <tr>No data was returned</tr>
+                        <tr><p>No Data Was Returned</p></tr>
                     </table>
                 </EmptyDataTemplate>
                 <EmptyItemTemplate>
@@ -33,6 +33,9 @@
                                     <br />
                                     <span><p>Price: <%#: String.Format("{0:c}", Item.UnitPrice) %></p></span>
                                     <br />
+                                    <a href="/AddToCart.aspx?productID=<%#: Item.ProductID %>">
+                                        <span class="ProductListItem"><p>Add To Cart</p></span>
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
